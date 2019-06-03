@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.xf.mapper.UserInfoAllMapper">
+        <!--获取分页总数量-->
+        <select id="countUserInfo" resultType="int">
+            SELECT COUNT(*) FROM userinfo
+        </select>
+        <!--查询所有-->
+        <select id="listUserInfoAll" resultType="com.xf.pojo.UserInfo" parameterType="Map">
+            select * from userinfo limit #{start},#{size}
+        </select>
+
+        <!--查询个人-->
+        <select id="listUserInfo" resultType="com.xf.pojo.UserInfo" parameterType="int">
+            select * from userinfo where userId=#{userId}
+        </select>
+
+        <!--修改个人信息-->
+        <update id="updateUserInfoById" parameterType="com.xf.pojo.UserInfo">
+            update userinfo set userName=#{userName},password=#{password},regEmail=#{regEmail},mobile=#{mobile}
+            where userId=#{userId}
+        </update>
+
+        <!--删除个人信息-->
+        <delete id="deleteUserInfoById" parameterType="int">
+            delete from userinfo where userId=#{userId}
+        </delete>
+
+        <!--新增用户-->
+        <insert id="insertUserInfo" parameterType="com.xf.pojo.UserInfo">
+            insert into userinfo(userName,password,regEmail,mobile)
+            values(#{userName},#{password},#{regEmail},#{mobile})
+        </insert>
+
+        <!--多项选择删除-->
+        <delete id="deleteAll" parameterType="com.xf.vo.UserListVo">
+            delete from userinfo
+            where
+            <foreach collection="list" item="userId" separator="or">
+            userId=#{userId}
+        </foreach>
+        </delete>
+
+        <!--查询用户身份信息-->
+        <select id="listRoleDtoById" resultType="com.xf.dto.RoleDto" parameterType="int">
+            SELECT r.*,ISNULL(userId) ISNULL FROM user_role ur
+            RIGHT JOIN roleinfo r
+            ON
+            r.`ROLEID`=ur.`ROLEID` AND ur.`USERID`=#{userId};
+        </select>
+
+    <!--添加重新选择后的用户角色-->
+    <update id="updateUserRoleById" parameterType="com.xf.vo.UserRoleVo">
+        insert into user_role(userId,roleId)
+        values
+        <foreach collection="roleIds" item="roleIds" index="index" separator=",">
+            (#{userId},#{roleIds})
+        </foreach>
+    </update>
+    <!--删除用户角色信息-->
+    <delete id="deleteUserRoleById" parameterType="int">
+        delete from user_role where userId=#{userId}
+    </delete>
+    </mapper>

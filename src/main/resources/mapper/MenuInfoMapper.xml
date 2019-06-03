@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xf.mapper.MenuInfoMapper">
+    <resultMap id="menuInfoMap" type="com.xf.dto.MenuInfoDto">
+        <id column="menuId" property="id"></id>
+        <result column="parentId" property="pid"></result>
+        <result column="menu_name" property="name"></result>
+        <result column="menu_url" property="url"></result>
+        <result column="menu_icon" property="icon"></result>
+        <collection property="children" ofType="com.xf.dto.MenuInfoDto">
+            <id column="c_id" property="id"></id>
+            <result column="c_name" property="name"></result>
+            <result column="c_url" property="url"></result>
+            <result column="c_icon" property="icon"></result>
+            <result column="c_pid" property="pid"></result>
+            <result column="checked" property="checked"></result>
+        </collection>
+    </resultMap>
+
+    <select id="listMenu" resultMap="menuInfoMap" parameterType="int">
+        SELECT tb.*,ISNULL(re.`MENUID`) checked FROM(SELECT m1.*,m2.menu_icon c_icon,m2.menuId c_id,m2.menu_name c_name,m2.menu_url c_url,m2.parentId c_pid
+         FROM menuinfo m1,menuinfo m2 WHERE m1.menuId = m2.parentId) tb
+         LEFT JOIN (SELECT * FROM role_menu WHERE roleId = #{roleId}) re ON tb.c_id=re.`MENUID`
+    </select>
+
+    <select id="listMenuByUserId" resultMap="menuInfoMap" parameterType="int">
+        SELECT m1.*,m2.MENU_ICON c_icon,m2.MENUID c_id,m2.MENU_NAME c_name,m2.MENU_URL c_url,m2.PARENTID c_pid FROM menuinfo m1,menuinfo m2 WHERE m2.MENUID IN
+        (SELECT menuid FROM (SELECT ur.* FROM userinfo u,user_role ur,roleinfo r WHERE u.userid=ur.userid AND ur.roleid=r.roleid AND u.userid=#{userId}) tb1
+        LEFT JOIN role_menu rm ON tb1.roleid=rm.`ROLEID` GROUP BY menuid) AND m1.menuid=m2.parentid
+    </select>
+
+    <!--删除对应的roleId的权限分配列表-->
+    <delete id="deleteRoleMenuById" parameterType="int">
+        delete from role_menu where roleId=#{roleId}
+    </delete>
+    <!--添加修改后的权限分配列表-->
+    <insert id="updateRoleMenuById" parameterType="com.xf.vo.RoleMenuVo">
+        insert into role_menu(roleId,menuId) values
+        <foreach collection="menuId" item="menuId" separator=",">
+            (#{roleId},#{menuId})
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,5 @@
+2019-05-29 20:04:05,898 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b0375b3: startup date [Wed May 29 20:04:05 CST 2019]; root of context hierarchy
+2019-05-29 20:04:06,049 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+2019-05-29 20:04:06,863 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-service.xml]
+2019-05-29 20:04:08,115 INFO [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from class path resource [mysql.properties]
+2019-05-29 20:04:11,190 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited

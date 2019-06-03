@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xf.mapper.UserInfoMapper">
+
+    <!--下面这种情况是一对多-->
+    <resultMap id="userInfoMap" type="com.xf.pojo.UserInfo">
+        <id column="USERID" property="userId"></id>
+        <result column="USERNAME" property="userName"></result>
+        <result column="PASSWORD" property="password"></result>
+        <result column="REGEMAIL" property="regEmail"></result>
+        <result column="MOBILE" property="mobile"></result>
+        <result column="ICON" property="icon"></result>
+
+    </resultMap>
+
+    <!--还有一种情况是1对1-->
+    <!--登录-->
+    <select id="userLogin" resultType="com.xf.pojo.UserInfo" parameterType="com.xf.vo.UserInfoVo">
+        SELECT * from userinfo where username = #{userName} and password = #{password}
+    </select>
+
+    <select id="listUserInfoBy" resultType="com.xf.pojo.UserInfo" parameterType="com.xf.vo.UserInfoVo">
+        select * from userinfo
+        <where>
+            <if test="userName != null and userName !=''">
+                and username = #{userName}
+            </if>
+            <if test="regEmail != null and regEmail !=''">
+                and regemail like #{regEmail}
+            </if>
+            <if test="mobile != null and mobile !=''">
+                and mobile like #{mobile}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="listUserInfoAndRoleInfo" resultMap="userInfoMap">
+        SELECT u.*,r.* from userinfo u,user_role ur,roleinfo r
+        where u.USERID = ur.USERID and r.ROLEID = ur.ROLEID
+    </select>
+
+    <select id="listUserInfoSplitePage" resultType="UserInfo" parameterType="com.xf.vo.UserInfoVo">
+        select * from userinfo
+        <where>
+            <if test="email != null and email !=''">
+                and regemail LIKE #{email}
+            </if>
+        </where>
+        LIMIT #{start},#{pageSize}
+    </select>
+
+    <update id="updateBy" parameterType="com.xf.pojo.UserInfo">
+        UPDATE userinfo
+
+        <set>
+            <if test="userName!=null and userName!=''">
+                username = #{userName},
+            </if>
+            <if test="password!=null and password!=''">
+                password = #{password},
+            </if>
+            <if test="regEmail!=null and regEmail!=''">
+                regEmail = #{regEmail},
+            </if>
+            <if test="mobile!=null and mobile!=''">
+                mobile = #{mobile},
+            </if>
+            <if test="icon!=null and icon!=''">
+                icon = #{icon},
+            </if>
+        </set>
+        WHERE  userid = #{userId}
+    </update>
+    <!--注册-->
+    <insert id="insertAll" parameterType="com.xf.pojo.UserInfo">
+        insert into userinfo
+        values(default,#{userName},#{password},#{regEmail},#{mobile},#{icon})
+    </insert>
+
+</mapper>
+

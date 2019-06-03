@@ -1,0 +1,24 @@
+2019-05-28 19:59:21,505 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b0375b3: startup date [Tue May 28 19:59:21 CST 2019]; root of context hierarchy
+2019-05-28 19:59:21,647 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+2019-05-28 19:59:21,932 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-service.xml]
+2019-05-28 19:59:22,349 INFO [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from class path resource [mysql.properties]
+2019-05-28 19:59:24,314 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2019-05-28 19:59:24,789 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-05-28 19:59:24,845 INFO [org.springframework.jdbc.support.SQLErrorCodesFactory] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2019-05-28 20:02:58,782 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b0375b3: startup date [Tue May 28 20:02:58 CST 2019]; root of context hierarchy
+2019-05-28 20:02:58,914 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+2019-05-28 20:02:59,239 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-service.xml]
+2019-05-28 20:02:59,714 INFO [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from class path resource [mysql.properties]
+2019-05-28 20:03:02,368 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2019-05-28 20:03:02,900 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-05-28 20:03:02,988 INFO [org.springframework.jdbc.support.SQLErrorCodesFactory] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2019-05-28 20:03:43,013 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b0375b3: startup date [Tue May 28 20:03:43 CST 2019]; root of context hierarchy
+2019-05-28 20:03:43,117 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+2019-05-28 20:03:43,416 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-service.xml]
+2019-05-28 20:03:43,919 INFO [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from class path resource [mysql.properties]
+2019-05-28 20:03:46,740 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+2019-05-28 20:17:01,812 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b0375b3: startup date [Tue May 28 20:17:01 CST 2019]; root of context hierarchy
+2019-05-28 20:17:01,925 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+2019-05-28 20:17:02,256 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-service.xml]
+2019-05-28 20:17:02,796 INFO [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from class path resource [mysql.properties]
+2019-05-28 20:17:05,650 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
